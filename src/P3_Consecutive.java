@@ -1,9 +1,10 @@
 /*
 	ISYS 320
-	Name(s):
-	Date: 
+	Name(s):AlfuhrudSolomon
+	Date: Apr22, 2018
 */
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class P3_Consecutive {
@@ -24,13 +25,34 @@ public class P3_Consecutive {
 		
 			System.out.printf( "a: %d, b: %d, c: %d -> ", num1, num2, num3);
 			
-
+			if(areConsecutiveNumbers(num1, num2, num3)) {
+				System.out.println("The numbers are consecutive");
+			} else {
+				System.out.println("The numbers are not consecutive");
+			}
 			
 			System.out.print("Would you like to do it again (enter 'n' to quit)? ");
 			doItAgainResponse = console.next();
 		} while( !doItAgainResponse.equalsIgnoreCase("n"));
 		
 		System.out.println("Thanks!");
+	}
+	
+	public static boolean areConsecutiveNumbers(int num1, int num2, int num3 ) {
+		
+		int[] ns = {num1, num2, num3};
+		
+		Arrays.sort(ns);
+		
+		for(int x = 0; x < ns.length; x++) {
+			if((x + 1) < ns.length) {
+				if(ns[x] + 1 != ns[x + 1]) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 	
 
